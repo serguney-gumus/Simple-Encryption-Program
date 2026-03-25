@@ -22,13 +22,14 @@ void menu(void)
     int operation = 0;
     
     // Stay in the looop until program is terminated
-    while (operation != 3)
+    while (operation != 4)
     {
         /*Menu Operations*/
         printf("Encryption!\n");
         printf("(1) Change the secret code\n");
         printf("(2) Encrypt text\n");
-        printf("(3) Quit\n");
+        printf("(3) Write encrypted text\n");
+        printf("(4) Quit\n");
         operation = getOperation(operation);
 
     };
@@ -45,7 +46,7 @@ int getOperation(int opSelect)
     sscanf(input, "%d", &opSelect);
     
     // Check if the entered input valid 
-    if (opSelect == 1 || opSelect == 2 || opSelect == 3)
+    if (opSelect > 0 && opSelect < 5)
     {
         return opSelect;   
     }
