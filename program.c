@@ -3,6 +3,7 @@
 // Call the libraries
 #include<stdlib.h>
 #include<stdio.h>
+#include "functions.h"
 
 // Function gets integer input from user
 int getOperation(int);
@@ -20,6 +21,7 @@ int main ()
 void menu(void)
 {
     int operation = 0;
+    int secretCode;
     
     // Stay in the looop until program is terminated
     while (operation != 4)
@@ -30,25 +32,22 @@ void menu(void)
         printf("(2) Encrypt text\n");
         printf("(3) Write encrypted text\n");
         printf("(4) Quit\n");
+        
+        // Get operation
         operation = getOperation(operation);
-
-    };
-}
+    }
+};
 
 int getOperation(int opSelect)
 {
-    // Caharacter array for the input
-    char input[100];
-    
     // Get input
     printf("Please enter your operation(e.g. 1, 2):");
-    fgets(input, sizeof(input), stdin);
-    sscanf(input, "%d", &opSelect);
+    scanf("%d", &opSelect);
     
     // Check if the entered input valid 
     if (opSelect > 0 && opSelect < 5)
     {
-        return opSelect;   
+        return opSelect;
     }
 
     // Print error msg
