@@ -21,7 +21,9 @@ int main ()
 void menu(void)
 {
     int operation = 0;
-    int secretCode;
+
+    // Default code
+    int secretCode = 65;
     
     // Stay in the looop until program is terminated
     while (operation != 4)
@@ -35,6 +37,22 @@ void menu(void)
         
         // Get operation
         operation = getOperation(operation);
+        switch (operation)
+        {
+        case 1:
+            secretCode = getSecretCode(secretCode);
+            break;
+        case 2:
+            /**/
+            break;
+        case 3:
+            /**/;
+            break;
+        default:
+            break;
+        }
+
+        printf("\n%d\n", secretCode);
     }
 };
 

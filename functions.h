@@ -3,6 +3,6 @@
 
 /*Function declarations*/
 
-int getSecretCode(void);
+int getSecretCode(int);
 
 #endif
