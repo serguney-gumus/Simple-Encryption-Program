@@ -3,6 +3,7 @@
 
 /*Function declarations*/
 
-int getSecretCode(int);
+char getSecretCode(char);
+void printSecretCode(char);
 
 #endif
