@@ -1,39 +1,8 @@
 // Call the libraries
 #include<stdlib.h>
 #include<stdio.h>
+#include<string.h>
 #include "functions.h"
-
-char getSecretCode(char s_code)
-{  
-    // User input
-    char ch;
-    // Control loop
-    int flag = 0;
-
-    while (!flag)
-    {
-        // Get the secret code
-        printf("Enter the secret code: ");
-        scanf(" %c", &ch);
-
-        // ASCII value
-        s_code = ch;
-
-        // Check if the netered code valid
-        if (s_code >= 48 && s_code <= 57 || s_code >= 65 && s_code <= 90)
-        {
-            flag = 1;
-        }
-        else
-        {
-            printf("Invalid input entered!\n");
-        }
-
-    }
-
-    // Return to the ASCII value
-    return ch;
-}
 
 void printSecretCode(char s_code)
 {
@@ -44,3 +13,94 @@ void printSecretCode(char s_code)
     }
     printf("\n");
 }
+
+void base16ToText(char* base16, char* text, int length)
+{
+    for (int i = 0; i < length; i++)
+    {
+        // Convert each character from base 16 to its integer value
+        switch (base16[i])
+        {
+        case '0':
+            text[i] = 0;
+            break;
+        
+        case '1':
+            text[i] = 1;
+            break;
+
+        case '2':
+            text[i] = 2;
+            break;
+
+        case '3':
+            text[i] = 3;
+            break;
+        
+        case '4':
+            text[i] = 4;
+            break;
+
+        case '5':
+            text[i] = 5;
+            break;
+
+        case '6':
+            text[i] = 6;
+            break;
+
+        case '7':
+            text[i] = 7;
+            break;
+
+        case '8':
+            text[i] = 8;
+            break;
+        
+        case '9':
+            text[i] = 9;
+            break;
+
+        case 'A':
+            text[i] = 10;
+            break;
+        
+        case 'B':
+            text[i] = 11;
+            break;
+
+        case 'C':
+            text[i] = 12;
+            break;
+
+        case 'D':
+            text[i] = 13;
+            break;
+
+        case 'E':
+            text[i] = 14;
+            break;
+
+        case 'F':
+            text[i] = 16;
+            break;
+
+        default:
+            break;
+        }
+
+        
+    }
+    text[length] = '\0'; // add end of line
+    
+}
+
+void encryption(char* text, char* encryptedText, int length, char scretCode)
+{
+    for (int i = 0; i < length; i++)
+    {
+        encryptedText[i] = text[i] ^ scretCode;
+    }
+    encryptedText[length] = '\0'; // add end of line
+}
+
