@@ -5,6 +5,7 @@
 #include<stdio.h>
 #include<string.h>
 #include <unistd.h>
+#include <math.h>
 #include "functions.h"
 
 // Function gets secret code
@@ -28,6 +29,7 @@ int main ()
 void program(void)
 {
     /*Define veriables*/
+    int length; // Input length
     int operation = 0; // operation selector
     char secretCode = 'A'; // Default code
     char buffer[100]; // User input
@@ -40,8 +42,8 @@ void program(void)
         /*Menu Operations*/
         printf("Encryption!\n");
         printf("(1) Change the secret code\n");
-        printf("(2) Encrypt text (base 16)\n");
-        printf("(3) Encrypt text (base 2)\n");
+        printf("(2) Encrypt text (base 2)\n");
+        printf("(3) Encrypt text (base 16)\n");
         printf("(4) Write encrypted text\n");
         printf("(5) Quit\n");
         
@@ -56,15 +58,28 @@ void program(void)
         case 2:
             // Read input
             readString(buffer, 100);
-            int length = strlen(buffer); // input length
+            length = strlen(buffer); // input length
+            if (length % 8 != 0)
+            {
+                printf("Invalid input entered!\n");
+                break;
+            }
+            base2ToText(buffer, text, length);
+            printf("Text encrypted!%s\n", text);
+            break;
+        case 3:
+            // Read input
+            readString(buffer, 100);
+            length = strlen(buffer); // input length
             
             // Convert base 16 to character
             base16ToText(buffer, text, length);
 
             // Encrypt text
             encryption(text, encrypText, length, secretCode);
+            printf("-Text encrypted-\n");
             break;
-        case 3:
+        case 4:
             /**/;
             break;
         default:

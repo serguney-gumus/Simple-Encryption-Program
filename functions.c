@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include<stdio.h>
 #include<string.h>
+#include <math.h>
 #include "functions.h"
 
 void printSecretCode(char s_code)
@@ -95,11 +96,32 @@ void base16ToText(char* base16, char* text, int length)
     
 }
 
+void base2ToText(char* base2, char* text, int length)
+{   
+    int count = length / 8; // Calculate the length of text
+    int index = 0; // Global index for base2
+    int i; // Index for text
+    for (i = 0; i < count; i++)
+    {
+        int sum = 0;
+        for (double j = 7; j >= 0; j--)
+        {
+            if (base2[index] != '0')
+            {
+                sum += (int)pow(2.0,j); // Binary to integer
+            }
+            index ++;
+        }
+        text[i] = sum;
+    }
+    text[i] = '\0';
+}
+
 void encryption(char* text, char* encryptedText, int length, char scretCode)
 {
     for (int i = 0; i < length; i++)
     {
-        encryptedText[i] = text[i] ^ scretCode;
+        encryptedText[i] = text[i] ^ scretCode; // XOR operation
     }
     encryptedText[length] = '\0'; // add end of line
 }
