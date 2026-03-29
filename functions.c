@@ -126,3 +126,18 @@ void encryption(char* text, char* encryptedText, int length, char scretCode)
     encryptedText[length] = '\0'; // add end of line
 }
 
+void writeFile(char* encrypted)
+{
+    // Open file
+    FILE *f = fopen("encrypted.enc", "wb");
+    
+    // Error check
+    if (f == NULL)
+    {
+        printf("Failed to open the file");
+        exit(1);
+    }
+
+    // Write to file
+    fprintf(f, "%s", encrypted);
+}

@@ -53,10 +53,12 @@ void program(void)
         {
         case 1:
             secretCode = getSecretCode(secretCode);
+            printf("Your secret code");
             printSecretCode(secretCode);
             break;
         case 2:
             // Read input
+            printf("Please enter the text to encrypt:");
             readString(buffer, 100);
             length = strlen(buffer); // input length
             if (length % 8 != 0)
@@ -64,11 +66,19 @@ void program(void)
                 printf("Invalid input entered!\n");
                 break;
             }
+
+            // Convert base2 to character
             base2ToText(buffer, text, length);
-            printf("Text encrypted!%s\n", text);
+            
+            // Encrypt text
+            encryption(text, encrypText, strlen(text), secretCode);
+            
+            // Print message
+            printf("-Text encrypted-\n");
             break;
         case 3:
             // Read input
+            printf("Please enter the text to encrypt:");
             readString(buffer, 100);
             length = strlen(buffer); // input length
             
@@ -77,16 +87,21 @@ void program(void)
 
             // Encrypt text
             encryption(text, encrypText, length, secretCode);
+            
+            // Print message
             printf("-Text encrypted-\n");
             break;
         case 4:
-            /**/;
+            // Write file
+            writeFile(encrypText);
+            
+            // Print message
+            printf("-File written-\n");
             break;
         default:
             break;
         }
-
-        printf("\n-----------\n");
+        printf("-----------\n");
     }
 };
 
@@ -96,7 +111,7 @@ int getOperation(int opSelect)
     char buffer[100];
     printf("Please enter your operation(e.g. 1, 2):");
     fgets(buffer, sizeof(buffer), stdin); 
-    opSelect =  atoi(buffer);
+    sscanf(buffer, "%d", &opSelect);
     
     // Check if the entered input valid 
     if (opSelect > 0 && opSelect <= 5)
