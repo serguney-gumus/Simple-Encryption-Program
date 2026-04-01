@@ -7,9 +7,9 @@ This project is a small C program performing basic text encryption usin exclusiv
 > Note: This is a **demonstration project** for learning purposes. XOR encryption is **not secure** for real-world cryptographic use.
 
 ## Features
-Encrypts text using XOR with a given single character key
-Supports user input for both key and plaintext
-Writes encrypted data to a file
+Encrypts text using XOR with a given single character key.
+Supports user input for both key and plaintext.
+Writes encrypted data to a file.
 
 ## How It Works
 The encryption algorithm applies the XOR operation between each character of the plaintext and the key:
