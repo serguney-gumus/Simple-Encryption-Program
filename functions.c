@@ -140,4 +140,6 @@ void writeFile(char* encrypted)
 
     // Write to file
     fprintf(f, "%s", encrypted);
+
+    fclose(f);
 }
